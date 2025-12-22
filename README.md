@@ -1,7 +1,11 @@
 # Stock Ticker Scraping Microservice
 
-A production-ready microservice for scraping AI-generated stock summaries from MarketBeat. Built with Flask, Selenium, and modern web technologies.
+A production-ready microservice for scraping AI-generated stock summaries . Built with Flask, Selenium, and modern web technologies.
 
+# TRY IT OUT (;
+===================================================
+# https://hippopotamus-sentiment.up.railway.app/ 
+===================================================
 ## Overview
 
 This microservice provides a RESTful API and web interface for automatically scraping AI-generated stock summaries from MarketBeat. It uses Selenium WebDriver to access MarketBeat, locate AI summary blocks, and provides the content for download. The service follows a privacy-first approach - it stores only audit logs (metadata) and never stores the actual content.
@@ -91,124 +95,7 @@ service_scraping/
 └── railway.json            # Railway deployment config
 ```
 
-## Installation
 
-### Prerequisites
-
-- Python 3.9+
-- Docker (optional, for containerized deployment)
-- Chrome/Chromium (automatically installed in Docker)
-
-### Quick Start
-
-#### Option 1: Docker (Recommended)
-
-```bash
-# Build and run with Docker
-python3 docker_run.py
-```
-
-This will:
-- Build the Docker image
-- Start the container
-- Open your browser automatically
-
-#### Option 2: Local Development
-
-```bash
-# Install dependencies
-pip install -r requirements.txt
-
-# Run the service
-python3 run.py
-```
-
-The service will be available at `http://localhost:5001/`
-
-## API Endpoints
-
-### Health Check
-
-```http
-GET /health
-```
-
-**Response:**
-```json
-{
-  "status": "healthy",
-  "service": "scraping",
-  "message": "Scraping microservice is running"
-}
-```
-
-### Scrape by Ticker (POST)
-
-```http
-POST /scrape
-Content-Type: application/json
-
-{
-  "ticker": "AAPL"
-}
-```
-
-**Response (Success):**
-```json
-{
-  "success": true,
-  "ticker": "AAPL",
-  "text": "...",
-  "text_length": 1234,
-  "json_size": 5678,
-  "request_id": "abc12345",
-  "structured_data": {
-    "ticker": "AAPL",
-    "company_name": "Apple Inc.",
-    "date": "20241117",
-    "header": "...",
-    "sentiment_items": [
-      {
-        "sentiment": "Positive",
-        "description": "...",
-        "article_title": "..."
-      }
-    ],
-    "bottom_line": "...",
-    "metadata": {
-      "posted_time": "Posted 1h ago",
-      "disclaimer": "AI Generated. May Contain Errors."
-    }
-  }
-}
-```
-
-### Scrape by Ticker (GET)
-
-```http
-GET /scrape/AAPL
-```
-
-**Response:** Same as POST endpoint
-
-### Download Endpoints
-
-```http
-GET /scrape/<ticker>/download/json    # Download JSON file
-GET /scrape/<ticker>/download/txt     # Download TXT file
-GET /scrape/<ticker>/download/both    # Download ZIP with both files
-```
-
-### Ticker Logo Endpoints
-
-```http
-GET /ticker/<ticker>/logo             # Get logo URL
-GET /ticker/<ticker>/logo/image       # Proxy endpoint for logo image (CORS-safe)
-```
-
-## Web UI Features
-
-The web interface provides a modern, user-friendly experience for scraping and viewing stock data.
 
 ### Main Features
 
@@ -247,97 +134,6 @@ The web interface provides a modern, user-friendly experience for scraping and v
 - **Ticker Logo** - Includes ticker logo in PDF header
 - **Structured Layout** - Professional formatting with sentiment analysis
 
-## Configuration
-
-Configuration is managed through `config/config.yaml` and can be overridden with environment variables.
-
-### Key Configuration Options
-
-```yaml
-selenium:
-  wait_timeout: 2
-  page_load_timeout: 14
-  headless: true
-
-server:
-  host: "0.0.0.0"
-  port: 5001
-  debug: false
-
-scraping:
-  base_url_template: "https://www.marketbeat.com/stocks/NASDAQ/{ticker}/news/"
-  ticker_logo_url_template: "https://static2.finnhub.io/file/publicdatany/finnhubimage/stock_logo/{ticker}.svg"
-```
-
-### Environment Variables
-
-- `SCRAPING_PORT` - Server port (default: 5001)
-- `SCRAPING_HOST` - Server host (default: 0.0.0.0)
-- `SCRAPING_DEBUG` - Debug mode (default: false)
-- `SCRAPING_SAVE_TO_SERVER` - Save files on server (default: false)
-- `PYTHONPATH` - Python path (set automatically by run.py)
-
-## Deployment
-
-### Railway
-
-The project includes `railway.json` for Railway deployment:
-
-```json
-{
-  "build": {
-    "builder": "DOCKERFILE",
-    "dockerfilePath": "./Dockerfile"
-  },
-  "deploy": {
-    "startCommand": "gunicorn --bind 0.0.0.0:$PORT --workers 2 --timeout 120 --access-logfile - --error-logfile - service_scraping.api.wsgi:application"
-  }
-}
-```
-
-### Docker
-
-```bash
-# Build image
-docker build -t scraping-service -f Dockerfile .
-
-# Run container
-docker run -d \
-  -p 5001:5001 \
-  -v $(pwd)/output:/app/service_scraping/output \
-  -v $(pwd)/logs:/app/service_scraping/logs \
-  --name scraping-service \
-  scraping-service
-```
-
-### Production
-
-For production deployment, use gunicorn:
-
-```bash
-gunicorn --bind 0.0.0.0:$PORT \
-  --workers 2 \
-  --timeout 120 \
-  --access-logfile - \
-  --error-logfile - \
-  service_scraping.api.wsgi:application
-```
-
-## Development
-
-### Running Locally
-
-```bash
-# Activate virtual environment
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run development server
-python3 run.py
-```
-
 ### Project Structure Guidelines
 
 - **api/** - API endpoints and routing
@@ -348,12 +144,7 @@ python3 run.py
 - **utils/** - Utility functions
 - **web_ui/** - Frontend assets and templates
 
-### Adding New Features
 
-1. **API Endpoints** - Add to `api/routes/`
-2. **Business Logic** - Add to `core/` or `service/`
-3. **Frontend** - Update `web_ui/static/js/app.js` and `web_ui/templates/index.html`
-4. **Configuration** - Update `config/config.yaml` and `config/config.py`
 
 ## HTTP Status Codes
 
@@ -380,22 +171,6 @@ ScrapingError (base)
 └── InvalidTickerError → HTTP 400
 ```
 
-## Testing
-
-```bash
-# Run tests
-python -m pytest tests/
-
-# Run specific test
-python -m pytest tests/test_api.py
-```
-
-## Logging
-
-Logs are written to:
-- `logs/scraping_service.log` - Application logs
-- `logs/scraping_service.json.log` - Structured JSON logs
-- `logs/audit.log` - Audit trail (metadata only)
 
 ## Privacy & Security
 
@@ -404,15 +179,6 @@ Logs are written to:
 - **Rate Limiting** - Built-in protection against abuse
 - **Request Tracking** - All requests are tracked with unique IDs
 
-## License
-
-[Add your license here]
-
-## Support
-
-For issues, questions, or contributions, please [add your support channels here].
-
-## Changelog
 
 ### Recent Updates
 
@@ -423,6 +189,4 @@ For issues, questions, or contributions, please [add your support channels here]
 - Added PWA support
 - Enhanced error handling and logging
 
----
-
-For detailed setup instructions, see [QUICKSTART.md](QUICKSTART.md)
+# TheKingHippopotamus 
