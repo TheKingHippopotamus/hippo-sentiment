@@ -1,4 +1,4 @@
-# Stock Ticker Scraping Microservice
+# Hippo-Sentiment
 
 A production-ready microservice for scraping AI-generated stock summaries . Built with Flask, Selenium, and modern web technologies.
 
