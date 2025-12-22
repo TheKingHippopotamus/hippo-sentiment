@@ -8,16 +8,16 @@ This microservice provides a RESTful API and web interface for automatically scr
 
 ### Screenshots
 
-![Web UI - Main Interface](web_ui/static/example1.png)
+![Web UI - Main Interface](example1.png)
 *Main search interface with ticker input and results display*
 
-![Web UI - Results View](web_ui/static/example2.png)
+![Web UI - Results View](example2.png)
 *Scraped results with sentiment highlighting and download options*
 
-![Web UI - PDF Preview](web_ui/static/example3.png)
+![Web UI - PDF Preview](example3.png)
 *PDF preview modal before download*
 
-![Web UI - Mobile View](web_ui/static/example4.png)
+![Web UI - Mobile View](example4.png)
 *Responsive mobile interface*
 
 ## Key Features
