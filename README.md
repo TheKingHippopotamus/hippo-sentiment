@@ -4,7 +4,7 @@ A production-ready microservice for scraping AI-generated stock summaries . Buil
 
 # TRY IT OUT (;
 ===================================================
-# https://hippopotamus-sentiment.up.railway.app/ 
+# https://hippo-sentiment-975377229992.us-south1.run.app/
 ===================================================
 ## Overview
 
