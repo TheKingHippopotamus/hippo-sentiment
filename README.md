@@ -108,23 +108,9 @@ service_scraping/
 - **Responsive Design** - Works on desktop and mobile devices
 - **PWA Support** - Install as Progressive Web App
 
-### UI Screenshots
 
-<div align="center">
 
-![Main Interface](web_ui/static/example1.png)
-*Main search interface with ticker input*
 
-![Results View](web_ui/static/example2.png)
-*Scraped results with sentiment highlighting*
-
-![PDF Preview](web_ui/static/example3.png)
-*PDF preview modal before download*
-
-![Mobile View](web_ui/static/example4.png)
-*Responsive mobile interface*
-
-</div>
 
 ### PDF Generation
 
