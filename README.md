@@ -4,7 +4,10 @@ A production-ready microservice for scraping AI-generated stock summaries . Buil
 
 # TRY IT OUT (;  
 ===================================================
-# https://hippo-sentiment-975377229992.us-south1.run.app/
+https://hippo-sentiment-975377229992.us-south1.run.app/
+
+
+https://hippo-sentiment-ev63kd7dva-vp.a.run.app
 ===================================================
 ## Overview
 
