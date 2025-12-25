@@ -2,13 +2,13 @@
 
 A production-ready microservice for scraping AI-generated stock summaries . Built with Flask, Selenium, and modern web technologies.
 
-# TRY IT OUT (;
+# TRY IT OUT (;  
 ===================================================
 # https://hippo-sentiment-975377229992.us-south1.run.app/
 ===================================================
 ## Overview
 
-This microservice provides a RESTful API and web interface for automatically scraping AI-generated stock summaries from MarketBeat. It uses Selenium WebDriver to access MarketBeat, locate AI summary blocks, and provides the content for download. The service follows a privacy-first approach - it stores only audit logs (metadata) and never stores the actual content.
+This microservice provides a RESTful API and web interface for automatically scraping AI-generated stock summaries from MarketBeat. It uses Selenium WebDriver to access MarketBeat, locate AI summary b[...] 
 
 ### Screenshots
 
@@ -111,7 +111,6 @@ service_scraping/
 
 
 
-
 ### PDF Generation
 
 - **Preview Modal** - Preview PDF content before download
@@ -129,7 +128,6 @@ service_scraping/
 - **config/** - Configuration management
 - **utils/** - Utility functions
 - **web_ui/** - Frontend assets and templates
-
 
 
 ## HTTP Status Codes
@@ -177,19 +175,22 @@ ScrapingError (base)
 
 ### Add Hippo to HomeScreen 👮
 
-** Safari
-_(Safari1.png)_
+**Safari**
 
-** Chrome
-_(Chrome1.png)_
+![Add Hippo to Home Screen - Safari](Safari1.png)
+*Tap the share icon and then choose "Add to Home Screen" in Safari.*
 
-** Both Browsers 
-_(2.png)_
+**Chrome**
 
-_(3.png)_
+![Add Hippo to Home Screen - Chrome](Chrome1.png)
+*Open the browser menu and select "Add to Home screen" in Chrome.*
 
-_(4.png)_
+**Both Browsers**
 
-_(Done.png)_
+![Home Screen Step 1](2.png)
+![Home Screen Step 2](3.png)
+![Home Screen Step 3](4.png)
+
+![Done - Hippo on Home Screen](Done.png)
 
 #Made With 🫀 By - TheKingHippopotamus 
