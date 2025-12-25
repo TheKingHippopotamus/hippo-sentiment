@@ -175,4 +175,21 @@ ScrapingError (base)
 - Added PWA support
 - Enhanced error handling and logging
 
-# TheKingHippopotamus 
+### Add Hippo to HomeScreen 👮
+
+** Safari
+_(Safari1.png)_
+
+** Chrome
+_(Chrome1.png)_
+
+** Both Browsers 
+_(2.png)_
+
+_(3.png)_
+
+_(4.png)_
+
+_(Done.png)_
+
+#Made With 🫀 By - TheKingHippopotamus 
