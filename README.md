@@ -2,13 +2,15 @@
 
 A production-ready microservice for scraping AI-generated stock summaries . Built with Flask, Selenium, and modern web technologies.
 
-# TRY IT OUT (;  
-===================================================
+# TRY IT OUT -- 2 Options 🦛
+
 https://hippo-sentiment-975377229992.us-south1.run.app/
 
 
 https://hippo-sentiment-ev63kd7dva-vp.a.run.app
-===================================================
+
+
+
 ## Overview
 
 This microservice provides a RESTful API and web interface for automatically scraping AI-generated stock summaries from MarketBeat. It uses Selenium WebDriver to access MarketBeat, locate AI summary b[...] 
