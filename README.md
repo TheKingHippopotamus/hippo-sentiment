@@ -177,7 +177,7 @@ ScrapingError (base)
 
 **Safari**
 
-![Add Hippo to Home Screen - Safari](Safari1.png)
+![Add Hippo to Home Screen - Safari](Safari_1.png)
 *Tap the share icon and then choose "Add to Home Screen" in Safari.*
 
 **Chrome**
@@ -193,4 +193,5 @@ ScrapingError (base)
 
 ![Done - Hippo on Home Screen](Done.png)
 
-#Made With 🫀 By - TheKingHippopotamus 
+# Made With 🫀 By - 
+# TheKingHippopotamus 
