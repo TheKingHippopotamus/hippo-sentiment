@@ -1,19 +1,18 @@
 # Hippo-Sentiment
 
-A production-ready microservice for scraping AI-generated stock summaries . Built with Flask, Selenium, and modern web technologies.
+A production-ready microservice for scraping AI-generated stock summaries. Built with Flask, Selenium, and modern web technologies.
 
 # TRY IT OUT -- 2 Options 🦛
 
 https://hippo-sentiment-975377229992.us-south1.run.app/
 
-
 https://hippo-sentiment-ev63kd7dva-vp.a.run.app
-
-
 
 ## Overview
 
-This microservice provides a RESTful API and web interface for automatically scraping AI-generated stock summaries from Some Capital Markets Platform. It uses Selenium WebDriver to access The Platforms, locate AI summary b[...] 
+This microservice provides a RESTful API and web interface for automatically scraping AI-generated stock summaries from Some Capital Markets Platform. It uses Selenium WebDriver to access The Platforms, locate AI summary blocks, and extract structured data including sentiment analysis.
+
+The system is designed with privacy in mind - it processes data on-demand and never stores sensitive content, only metadata for audit purposes. All scraping operations are tracked with unique request IDs, and the system includes comprehensive error handling, rate limiting, and caching mechanisms.
 
 ### Screenshots
 
@@ -35,7 +34,7 @@ This microservice provides a RESTful API and web interface for automatically scr
 - **RESTful API** - Simple and clear endpoints for scraping operations
 - **Web UI** - Modern, responsive web interface with PWA support
 - **PDF Generation** - Generate and download PDF reports with preview functionality
-- **Ticker Logos** - Automatic display of stock ticker logos in UI and PDFs
+- **Ticker Logos** - Automatic display of stock ticker logos in UI and PDFs with intelligent caching and local storage
 - **Structured Data Parsing** - Automatic parsing of text into structured JSON (sentiment items, metadata)
 - **Download Options** - Download as JSON, TXT, or both (ZIP)
 
@@ -44,7 +43,8 @@ This microservice provides a RESTful API and web interface for automatically scr
 - **Input Validation** - Ticker symbol validation
 - **Rate Limiting** - Built-in rate limiting to prevent abuse
 - **Audit Logging** - Comprehensive audit logs with request tracking
-- **Caching** - Metadata caching to reduce redundant operations
+- **Caching** - Metadata caching to reduce redundant operations, with Redis support for production deployments
+- **Logo Management** - Local logo storage with CORS-safe proxy endpoint and Redis caching for optimal performance
 - **Docker Support** - Easy deployment with containers
 - **Flexible Configuration** - Environment variable support
 - **PWA Support** - Progressive Web App capabilities for mobile devices
@@ -88,6 +88,7 @@ service_scraping/
 │   ├── static/             # Static assets
 │   │   ├── css/            # Stylesheets
 │   │   ├── js/             # JavaScript
+│   │   ├── ticker_logos/   # Local ticker logo storage
 │   │   └── *.png           # Images and icons
 │   └── templates/          # HTML templates
 │       └── index.html      # Main UI template
@@ -100,28 +101,23 @@ service_scraping/
 └── railway.json            # Railway deployment config
 ```
 
-
-
 ### Main Features
 
 - **Search Interface** - Enter ticker symbols to scrape data
 - **Results Display** - View scraped content with sentiment highlighting
-- **Ticker Logos** - Automatic display of stock logos
+- **Ticker Logos** - Automatic display of stock logos with local storage and intelligent fallback mechanisms
 - **Download Options** - Download as JSON, TXT, or PDF
 - **PDF Preview** - Preview PDF before downloading
 - **Search History** - View and reuse recent searches
 - **Responsive Design** - Works on desktop and mobile devices
 - **PWA Support** - Install as Progressive Web App
 
-
-
-
 ### PDF Generation
 
 - **Preview Modal** - Preview PDF content before download
 - **Direct Download** - No print dialog, direct file download
 - **Multi-page Support** - Automatic page breaks for long content
-- **Ticker Logo** - Includes ticker logo in PDF header
+- **Ticker Logo** - Includes ticker logo in PDF header with automatic fallback
 - **Structured Layout** - Professional formatting with sentiment analysis
 
 ### Project Structure Guidelines
@@ -133,7 +129,6 @@ service_scraping/
 - **config/** - Configuration management
 - **utils/** - Utility functions
 - **web_ui/** - Frontend assets and templates
-
 
 ## HTTP Status Codes
 
@@ -160,7 +155,6 @@ ScrapingError (base)
 └── InvalidTickerError → HTTP 400
 ```
 
-
 ## Privacy & Security
 
 - **No Content Storage** - Server never stores scraped content
@@ -168,17 +162,50 @@ ScrapingError (base)
 - **Rate Limiting** - Built-in protection against abuse
 - **Request Tracking** - All requests are tracked with unique IDs
 
+## Technology Stack
 
-### Recent Updates
+### Backend
+- **Python 3.9+** - Modern Python with type hints
+- **Flask 3.1.2** - Lightweight web framework
+- **Selenium 4.15.2** - Browser automation for dynamic content
+- **Gunicorn** - Production WSGI server
+- **Redis** - Optional caching and distributed locking (with graceful fallback)
+- **Flask-CORS** - Cross-origin resource sharing support
+- **Flask-Limiter** - Rate limiting protection
 
-- Added PDF preview functionality
-- Implemented ticker logo display in UI and PDFs
-- Added CORS-safe proxy endpoint for ticker logos
-- Improved mobile responsiveness
-- Added PWA support
-- Enhanced error handling and logging
+### Frontend
+- **Vanilla JavaScript (ES6+)** - Modern JavaScript without framework dependencies
+- **HTML5 & CSS3** - Semantic markup and responsive design
+- **Progressive Web App (PWA)** - Service worker for offline capabilities
+- **Client-side PDF Generation** - Dynamic PDF creation with jsPDF
 
-### Add Hippo to HomeScreen 👮
+### Infrastructure
+- **Docker** - Containerization for consistent deployment
+- **Environment-based Configuration** - Flexible config for different environments
+- **Structured Logging** - JSON-formatted logs for production monitoring
+
+## Architecture Highlights
+
+The system follows modern software architecture principles:
+
+- **Layered Architecture** - Clear separation: API → Service → Core → Infrastructure
+- **Application Factory Pattern** - Flask app creation with dependency injection
+- **Blueprint Pattern** - Modular route organization
+- **Privacy-First Design** - On-demand processing without content persistence
+- **Graceful Degradation** - System continues to function even if optional components (like Redis) are unavailable
+- **CORS-Safe Design** - Proxy endpoints for external resources to avoid cross-origin issues
+
+### Logo Management System
+
+The ticker logo system is designed for optimal performance and reliability:
+
+- **Local Storage** - Logos stored locally in `web_ui/static/ticker_logos/` for fast access
+- **CORS-Safe Proxy** - `/ticker/<ticker>/logo/image` endpoint serves logos without CORS issues
+- **Redis Caching** - Optional Redis caching with 7-day TTL for frequently accessed logos
+- **Intelligent Fallback** - Automatic fallback from local → Redis cache → external API
+- **Performance Optimized** - Cache headers and efficient loading strategies
+
+## Add Hippo to HomeScreen 👮
 
 **Safari**
 
@@ -199,4 +226,4 @@ ScrapingError (base)
 ![Done - Hippo on Home Screen](Done.png)
 
 # Made With 🫀 By - 
-# TheKingHippopotamus 
+# TheKingHippopotamus
