@@ -13,7 +13,7 @@ https://hippo-sentiment-ev63kd7dva-vp.a.run.app
 
 ## Overview
 
-This microservice provides a RESTful API and web interface for automatically scraping AI-generated stock summaries from MarketBeat. It uses Selenium WebDriver to access MarketBeat, locate AI summary b[...] 
+This microservice provides a RESTful API and web interface for automatically scraping AI-generated stock summaries from Some Capital Markets Platform. It uses Selenium WebDriver to access The Platforms, locate AI summary b[...] 
 
 ### Screenshots
 
