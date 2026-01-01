@@ -2,11 +2,18 @@
 
 A production-ready microservice for scraping AI-generated stock summaries. Built with Flask, Selenium, and modern web technologies.
 
-# TRY IT OUT -- 2 Options 🦛
+## Fast start  with Docker  ------ ** available For free for Ever 🦛 **
+```bash
+$ docker push thekinghippopotamus/hippo-sentiment:tagname
+```
+## Available On Cloud -- ** until January 1, 2026 **
+### TRY IT OUT on Cloude  🦛
 
 https://hippo-sentiment-975377229992.us-south1.run.app/
 
 https://hippo-sentiment-ev63kd7dva-vp.a.run.app
+
+
 
 ## Overview
 
