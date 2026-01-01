@@ -1,12 +1,12 @@
-# Hippo-Sentiment
+## Hippo-Sentiment -- Private Project 
 
-A production-ready microservice for scraping AI-generated stock summaries. Built with Flask, Selenium, and modern web technologies.
+** A production-ready microservice for scraping AI-generated stock summaries. Built with Flask, Selenium, and modern web technologies. **
 
 ## Fast start  with Docker  ------ ** available For free for Ever 🦛 **
 ```bash
 $ docker push thekinghippopotamus/hippo-sentiment:tagname
 ```
-## Available On Cloud -- ** until January 1, 2026 **
+## Available On Cloud -- ** Free Cloude until January 1, 2026 **
 ### TRY IT OUT on Cloude  🦛
 
 https://hippo-sentiment-975377229992.us-south1.run.app/
